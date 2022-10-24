@@ -16,6 +16,7 @@ int main() {
 	unsigned char data[] = {0x4e, 0xa1, 0x13, 0xff, 0x99};
 	char encoded[(sizeof(data)*2)+1] = {0};
 	unsigned char decoded[sizeof(data)] = {0};
+	char a = 'b';
 
 	hex_encode(data, sizeof(data), encoded);
 
@@ -23,7 +24,7 @@ int main() {
 
 	assert(strcmp("4ea113ff99", encoded) == 0);
 
-	hex_decode(encoded, sizeof(data), decoded);
+	hex_decode(encoded, strlen(encoded), decoded);
 
 	assert(arrcmp(data, decoded, sizeof(data)) == 0);
 }
