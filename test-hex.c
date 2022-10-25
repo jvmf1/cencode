@@ -16,7 +16,6 @@ int main() {
 	unsigned char data[] = {0x4e, 0xa1, 0x13, 0xff, 0x99};
 	char encoded[(sizeof(data)*2)+1] = {0};
 	unsigned char decoded[sizeof(data)] = {0};
-	char a = 'b';
 
 	hex_encode(data, sizeof(data), encoded);
 
