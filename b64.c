@@ -16,19 +16,16 @@ char b64bytetable[256] = {
 };
 
 void b64_encode(unsigned char *data, size_t len, char *dest) {
-	unsigned int t;
 	unsigned char o0,o1,o2;
 	unsigned char s0,s1,s2,s3;
 	for (size_t i = 0; i < len;) {
 		o0 = i < len? data[i++] : 0;
 		o1 = i < len? data[i++] : 0;
 		o2 = i < len? data[i++] : 0;
-		t = (o2) | (o1 << 8) | (o0 << 16);
 		s3 = o2 & 0b00111111;
 		s2 = (o2 & 0b11000000) >> 6 | ((o1 & 0b00001111) << 2);
 		s1 = (o1 & 0b11110000) >> 4 | (o0 & 0b00000011) << 4;
 		s0 = (o0 & 0b11111100) >> 2;
-		t = s3 | (s2 << 6) | (s1 << 12) | (s0 << 18);
 		*dest++ = b64chartable[s0];
 		*dest++ = b64chartable[s1];
 		*dest++ = b64chartable[s2];
