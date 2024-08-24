@@ -23,7 +23,7 @@ void hex_encode(unsigned char *data, size_t len, char *dest) {
 void hex_decode(char *data, size_t len, unsigned char *dest) {
 	unsigned char a;
 	unsigned char b;
-	for (size_t i = 0 ; i < len; i ++) {
+	for (size_t i = 0 ; i < len/2; i ++) {
 		a = *data;
 		b = *(data+1);
 		data+=2;
